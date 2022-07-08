@@ -12,6 +12,7 @@ class Ad04 extends CI_Controller {
 
     public function index()
     {
+        
         $json = $this->ad04model->SlideData();
         $product = $this->ad04model->mainList(1,null);
         $product2 = $this->ad04model->mainList2(1,null);
@@ -21,6 +22,7 @@ class Ad04 extends CI_Controller {
         $yutube = $this->ad04model->yutubeData();
 
         $array = array(
+            
             'slide'=>$json['list'],
             'product'=>$product['list'],
             'product2'=>$product2['list'],
@@ -34,6 +36,7 @@ class Ad04 extends CI_Controller {
 
     public function index2()
     {
+        
         $json = $this->ad04model->SlideData();
         $product = $this->ad04model->mainList(1,null);
         $product2 = $this->ad04model->mainList2(1,null);
@@ -43,6 +46,7 @@ class Ad04 extends CI_Controller {
         $yutube = $this->ad04model->yutubeData();
 
         $array = array(
+           
             'slide'=>$json['list'],
             'product'=>$product['list'],
             'product2'=>$product2['list'],
@@ -54,9 +58,94 @@ class Ad04 extends CI_Controller {
         $this->load->view('ad04/index2',$array);
     }
 
+    public function index3()
+    {
+        
+        $json = $this->ad04model->SlideData();
+        $product = $this->ad04model->mainList(1,null);
+        $product2 = $this->ad04model->mainList2(1,null);
+        $category = $this->ad04_adminmodel->categorySelectData();
+        $category2 = $this->ad04_adminmodel->category2SelectData();
+
+        $yutube = $this->ad04model->yutubeData();
+
+        $array = array(
+            
+            'slide'=>$json['list'],
+            'product'=>$product['list'],
+            'product2'=>$product2['list'],
+            'count'=>$product['count'],
+            'category' => $category,
+            'category2' => $category2,
+            'yutube' => $yutube['list']
+        );
+        $this->load->view('ad04/index3',$array);
+    }
+    public function index4()
+    {
+        
+        $event = $this->ad04model->EventData();
+        $json = $this->ad04model->SlideData();
+        $product = $this->ad04model->mainList(1,null);
+        $product2 = $this->ad04model->mainList2(1,null);
+        $category = $this->ad04_adminmodel->categorySelectData();
+        $category2 = $this->ad04_adminmodel->category2SelectData();
+
+        $yutube = $this->ad04model->yutubeData();
+
+        $array = array(
+            'event'=>$event['list'],
+            'slide'=>$json['list'],
+            'product'=>$product['list'],
+            'product2'=>$product2['list'],
+            'count'=>$product['count'],
+            'category' => $category,
+            'category2' => $category2,
+            'yutube' => $yutube['list']
+        );
+        $this->load->view('ad04/index4',$array);
+    }
+    public function index5()
+    {
+      
+        $json = $this->ad04model->SlideData();
+        $product = $this->ad04model->mainList(1,null);
+        $product2 = $this->ad04model->mainList2(1,null);
+        $category = $this->ad04_adminmodel->categorySelectData();
+        $category2 = $this->ad04_adminmodel->category2SelectData();
+
+        $yutube = $this->ad04model->yutubeData();
+
+        $array = array(
+            
+            'slide'=>$json['list'],
+            'product'=>$product['list'],
+            'product2'=>$product2['list'],
+            'count'=>$product['count'],
+            'category' => $category,
+            'category2' => $category2,
+            'yutube' => $yutube['list']
+        );
+        $this->load->view('ad04/index5',$array);
+    }
+
     public function about()
     {
         $this->load->view('ad04/about');
+    }
+
+    public function event()
+    {
+        $json = $this->ad04model->EventData();
+        $array = array(
+            'event'=>$json['list']
+        );
+        $this->load->view('ad04/index4',$array);
+    }
+    public function eventData()
+    {
+        $json = $this->ad04model->eventData();
+        $this->json($json);
     }
 
     public function call($idx)

@@ -26,7 +26,7 @@
 
 	<link href="/assets/css/global.css" rel="stylesheet" type="text/css">
 	<link href="/assets/css/main.css" rel="stylesheet" type="text/css">
-
+	<link href="/assets/css/event.css" rel="stylesheet" type="text/css">
 	<!-- Global site tag (gtag.js) - Google Ads: 675458681 -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-675458681"></script>
 	<script>
@@ -144,6 +144,9 @@
 	</script>
 	<!--AceCounter-Plus Log Gathering for AceTag Manager End -->
 
+
+
+
 </head>
 
 <body id="top">
@@ -212,7 +215,7 @@
 		</div>
 	</section>
 	<!-- Main_Banner_END -->
-
+	<div id="menu" ></div>
 	<!-- Live -->
 	<? foreach ($yutube as $list) : ?>
 		<section id="live">
@@ -226,90 +229,60 @@
 					</div>
 				</div>
 			</div>
+			
 		</section>
 	<? endforeach; ?>
 	<!-- Live_END -->
 
 
 
-
-	<div class="tab-menu">
+	<div class="tab-menu" >
 		<div class="container" style="padding: 0 6%;">
 			<ul id="myTab" class="nav nav-tabs bar_tabs menu_tabs">
-				<li class="ad04_cate_list active" data-number="0">
-					<button data-target="#tab_content_2_1" type="button" onclick="location.href='javascript:void(0);'" data-toggle="tab">전체</button>
+				<li >
+					<button onclick="location.href='../ad04#menu'" data-toggle="tab">전체</button>
+				</li>
+				<li class="ad04_cate_list " >
+					<button onclick="location.href='../ad04/index2#menu'" data-toggle="tab">상담시<br>사은품</button>
 				</li>
 				<li>
-					<button data-target="#tab_content_2_2 " data-toggle="tab">상담시 사은품</button>
+					<button onclick="location.href='../ad04/index3#menu'" data-toggle="tab">가입시<br>사은품</button>
 				</li>
-				<li>
-					<button data-target="#tab_content_2_3" data-toggle="tab">가입시 사은품</button>
+				<li class="ad04_cate_list active" data-number="15">
+					<button onclick="location.href='../ad04/index4#menu'" data-toggle="tab">이벤트</button>
 				</li>
-				<li class="ad04_cate_list" data-number="15">
-					<button data-target="#tab_content_2_1" type="button" onclick="location.href='javascript:void(0);'" data-toggle="tab">이벤트</button>
-				</li>
-				<li class="ad04_cate_list" data-number="16">
-					<button data-target="#tab_content_2_1" type="button" onclick="location.href='javascript:void(0);'" data-toggle="tab">기타</button>
+				<li class="ad04_cate_list" data-number="11">
+					<button onclick="location.href='../ad04/index5#menu'" data-toggle="tab" data-number="11">기타</button>
 				</li>
 			</ul>
 		</div>
 	</div>
-	
 
-	<!-- Product -->
-	<section id="product" class="mb30">
+
+	<section id="event_1" class="category">
 		<div class="container">
-			<div id="myTabContent" class="tab-content">
-				<div class="tab-pane fade in" id="tab_content_2_1">
-					<?php include('catelist/2_1.php'); ?>
-				</div>
-				<div class="tab-pane fade " id="tab_content_2_2">
-					<?php include('catelist/2_2.php'); ?>
-				</div>
-				<div class="tab-pane fade " id="tab_content_2_3">
-					<?php include('catelist/2_3.php'); ?>
-				</div>
-				<div class="tab-pane fade" id="tab_content_2_4">
-					<?php include('catelist/2_4.php'); ?>
-				</div>
-				<div class="tab-pane fade" id="tab_content_2_5">
-					<?php include('catelist/2_5.php'); ?>
-				</div>
-			</div>
+			<div class="row">
+				<!-- <p class="event_title">진행 중인 이벤트ss</p> -->
+				<?for($i = 0; $i < count($event); $i++) {
+					$j = 0; ?>
+					<div class="event pointer" data-idx="<?= $event[$i]->event_idx ?>">
+						<? foreach ($event[$i] as $key => $value) {
+							if (!strpos($key, 'idx')) {
+								if (strpos($key, 'image')) { ?>
+									<div class="banner"><a href="<?= $event[$i]->event_link  ?>"><img src="<?= SURL ?>/assets/uploads/<?= $value ?>"></a></div>
+								<? } else { ?>
+									<!-- <div class=" "><?= $value ?></div> -->
+						<? }
+							}
+							$j++;
+						} ?>
 
-			<div id="after"></div>
-			<? foreach ($product as $row) {
-				$image = $row->product_thumb; ?>
-				<div class="col-md-4 col-xs-6 main_list">
-					<div class="product_area" onclick="location.href='/ad04/get/<?= $row->product_idx ?>'">
-						<div class="bg" style=" background-image: url('/assets/uploads/<?= $image ?>');">
-							<div class="get_count">
-								<div>D-<?= $row->dates ?></div>
-							</div>
-							<div class="count">
-								<p>GET</p>
-								<p><?= $row->product_get ?></p>
-							</div>
-							<div class="contents">
-								<div class="cont-area">
-									<div class="brand">
-										<div class="title">
-											<p><?= $row->product_name ?></p>
-											<p><b><?= $row->insure_company ?></b> | <?= $row->insure_name ?></p>
-											<!-- <p><img src="/assets/uploads/<?= $row->insure_logo ?>" style="width: 16px; border-radius: 50%;"> <?= $row->insure_name ?></p> -->
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
 					</div>
-				</div>
-			<? } ?>
+				<? } ?>
+				
+			</div>
 		</div>
 	</section>
-	<!-- Product_END -->
-	</div>
-
 
 	<!-- Footer -->
 	<footer id="footer">

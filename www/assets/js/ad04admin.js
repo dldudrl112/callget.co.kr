@@ -84,6 +84,84 @@ $(document).ready(function(){
              });
          }
 
+         this.event = function() {
+            $('body').on('click', '#eventgo, #eventedit', function() {
+                var check = true;
+                $('.req').each(function() {
+                    if (!$(this).val()) {
+                         check = false;
+                         return false;
+                    }
+                });
+                if(check) {
+                    var form = $('form')[0];
+                    var data = new FormData(form);
+                    if($(this).attr('id') == "eventgo"){
+                        var json = jsonreturn('/ad04/admin/eventinsertData',data);
+                        if(json.return == true) {
+                            alert("등록되었습니다");
+                            location.href = "/ad04/admin/eventList";
+                        }
+                    }
+                    else {
+                        var json = jsonreturn('/ad04/admin/eventUpdate',data);
+                        if(json.return == true) {
+                            alert("수정되었습니다");
+                            location.reload();
+                        }
+                    }
+                }
+                else {
+                    $(this).next().trigger('click');
+                }
+            });
+            $('body').on('click', '.up', function() {
+                 var $tr = $(this).parent().parent(); // 클릭한 버튼이 속한 tr 요소
+                 $tr.prev().before($tr); // 현재 tr 의 이전 tr 앞에 선택한 tr 넣기
+             });
+
+             $('body').on('click', '.down', function() {
+                 var $tr = $(this).parent().parent(); // 클릭한 버튼이 속한 tr 요소
+                 $tr.next().after($tr); // 현재 tr 의 이전 tr 앞에 선택한 tr 넣기
+             });
+
+             $('body').on('click', '#idxgo', function() {
+               var result =json($(this).attr('data-count'));
+               var page = $(this).attr('data-page');
+                     var idxs = new Array();
+                     var idx = new Array();
+
+               var i;
+               if(page*10 > 10){
+                 if((result*1)/(10*(page-1)) > 1) {
+                   i = result - (page-1)*10;
+                 }
+                 else {
+                   i = result%((page-1)*10);
+                 }
+               } else {
+                   i =result;
+               }
+               $(".pointer").each(function() {
+                         idxs.push(i);
+                         idx.push($(this).attr('data-idx'));
+                         i--;
+                     });
+                     var url = $(this).attr('data-url');
+                     var result =json(url,{'idxs':idxs,'idx':idx});
+                     location.reload();
+                 });
+
+            $('body').on('change', '#eventimage', function() {
+                var json = uploadImage($(this));
+                $(this).next().val(json.url[0]);
+                $(this).next().next().css('display','block');
+                $(this).next().next().attr('src','/assets/uploads/'+json.url[0]);
+            });
+        }
+
+
+
          this.yutube = function() {
              $('body').on('click', '#yutubego, #yutubeedit', function() {
                  var check = true;
@@ -432,6 +510,7 @@ $(document).ready(function(){
     admin.faq();
     admin.product();
     admin.news();
+    admin.event();
     admin.login();
     admin.yutube();
 

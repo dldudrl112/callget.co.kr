@@ -12,6 +12,14 @@ class Ad04model extends CI_Model {
         return array('return'=>true,'list'=>$list);
     }
 
+    public function EventData()
+    {   //이벤트
+        $sql = "SELECT event_idx, event_image, event_link, event_name
+         FROM ad04_event ORDER BY event_idxs DESC";
+        $list = $this->db->query($sql)->result();
+        return array('return' => true, 'list' => $list);
+    } 
+
 
     public function SlideData() {   //메인 슬라이드
         $sql="SELECT slide_idx, slide_image, slide_link, slide_name

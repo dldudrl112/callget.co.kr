@@ -215,7 +215,7 @@
 		</div>
 	</section>
 	<!-- Main_Banner_END -->
-
+	<div id="menu"></div>
 	<!-- Live -->
 	<? foreach ($yutube as $list) : ?>
 		<section id="live">
@@ -229,29 +229,30 @@
 					</div>
 				</div>
 			</div>
+
 		</section>
 	<? endforeach; ?>
 	<!-- Live_END -->
 
 
 
-	<div class="tab-menu" id="menu">
+	<div class="tab-menu">
 		<div class="container" style="padding: 0 6%;">
 			<ul id="myTab" class="nav nav-tabs bar_tabs menu_tabs">
 				<li>
-					<button data-target="#tab_content_2_1" type="button" onclick="location.href='javascript:void(0);'" data-toggle="tab">전체</button>
+					<button onclick="location.href='../ad04#menu'" data-toggle="tab">전체</button>
 				</li>
-				<li class="ad04_cate_list active" data-number="0">
-					<button data-target="#tab_content_2_2 " data-toggle="tab">상담시 사은품</button>
+				<li class="ad04_cate_list active">
+					<button onclick="location.href='../ad04/index2#menu'" data-toggle="tab">상담시<br>사은품</button>
 				</li>
 				<li>
-					<button data-target="#tab_content_2_3" data-toggle="tab">가입시 사은품</button>
+					<button onclick="location.href='../ad04/index3#menu'" data-toggle="tab">가입시<br>사은품</button>
 				</li>
 				<li class="ad04_cate_list" data-number="15">
-					<button data-target="#tab_content_2_1" type="button" onclick="location.href='javascript:void(0);'" data-toggle="tab">이벤트</button>
+					<button onclick="location.href='../ad04/index4#menu'" data-toggle="tab">이벤트</button>
 				</li>
-				<li class="ad04_cate_list" data-number="16">
-					<button data-target="#tab_content_2_1" type="button" onclick="location.href='javascript:void(0);'" data-toggle="tab">기타</button>
+				<li class="ad04_cate_list" data-number="11">
+					<button onclick="location.href='../ad04/index5#menu'" data-toggle="tab" data-number="11">기타</button>
 				</li>
 			</ul>
 		</div>
@@ -263,14 +264,9 @@
 		<div class="container">
 			<div class="category">
 				<ul>
-					<li class="ad04_cate_list active" data-number="0">
-						<a href="javascript:void(0);">
-							<!-- <div class="sym" style="background-image: url('/assets/images/category/category_1.png');"></div> -->
-							<p>전체</p>
-						</a>
-					</li>
-					<li class="ad04_cate_list" data-number="1">
-						<a href="javascript:void(0);">
+
+					<li class="ad04_cate_list active" data-number="1">
+						<a id="ngm" href="javascript:void(0);">
 							<!-- <div class="sym" style="background-image: url('/assets/images/category/category_1.png');"></div> -->
 							<p>가전제품</p>
 						</a>
@@ -303,6 +299,11 @@
 				</ul>
 			</div>
 
+			<script>
+				window.onload = function() {
+					document.getElementById('ngm').click();
+				};
+			</script>
 
 			<div id="after"></div>
 			<? foreach ($product as $row) {

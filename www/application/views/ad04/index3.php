@@ -144,6 +144,9 @@
 	</script>
 	<!--AceCounter-Plus Log Gathering for AceTag Manager End -->
 
+
+
+
 </head>
 
 <body id="top">
@@ -212,7 +215,7 @@
 		</div>
 	</section>
 	<!-- Main_Banner_END -->
-
+	<div id="menu"></div>
 	<!-- Live -->
 	<? foreach ($yutube as $list) : ?>
 		<section id="live">
@@ -226,56 +229,83 @@
 					</div>
 				</div>
 			</div>
+
 		</section>
 	<? endforeach; ?>
 	<!-- Live_END -->
 
 
 
-
 	<div class="tab-menu">
-		<div class="container" style="padding: 0 6%;">
-			<ul id="myTab" class="nav nav-tabs bar_tabs menu_tabs">
-				<li class="ad04_cate_list active" data-number="0">
-					<button data-target="#tab_content_2_1" type="button" onclick="location.href='javascript:void(0);'" data-toggle="tab">전체</button>
-				</li>
-				<li>
-					<button data-target="#tab_content_2_2 " data-toggle="tab">상담시 사은품</button>
-				</li>
-				<li>
-					<button data-target="#tab_content_2_3" data-toggle="tab">가입시 사은품</button>
-				</li>
-				<li class="ad04_cate_list" data-number="15">
-					<button data-target="#tab_content_2_1" type="button" onclick="location.href='javascript:void(0);'" data-toggle="tab">이벤트</button>
-				</li>
-				<li class="ad04_cate_list" data-number="16">
-					<button data-target="#tab_content_2_1" type="button" onclick="location.href='javascript:void(0);'" data-toggle="tab">기타</button>
-				</li>
-			</ul>
+		<div class="container" >
+			<div class="category">
+				<ul id="myTab" class="nav nav-tabs bar_tabs menu_tabs">
+					<li>
+						<button onclick="location.href='../ad04#menu'" data-toggle="tab">전체</button>
+					</li>
+					<li>
+						<button onclick="location.href='../ad04/index2#menu'" data-toggle="tab">상담시<br>사은품</button>
+					</li>
+					<li class="ad04_cate_list active">
+						<button onclick="location.href='../ad04/index3#menu'" data-toggle="tab">가입시<br>사은품</button>
+					</li>
+					<li class="ad04_cate_list" data-number="15">
+						<button onclick="location.href='../ad04/index4#menu'" data-toggle="tab">이벤트</button>
+					</li>
+					<li class="ad04_cate_list" data-number="11">
+						<button onclick="location.href='../ad04/index5#menu'" data-toggle="tab" data-number="11">기타</button>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
-	
+
 
 	<!-- Product -->
 	<section id="product" class="mb30">
 		<div class="container">
-			<div id="myTabContent" class="tab-content">
-				<div class="tab-pane fade in" id="tab_content_2_1">
-					<?php include('catelist/2_1.php'); ?>
-				</div>
-				<div class="tab-pane fade " id="tab_content_2_2">
-					<?php include('catelist/2_2.php'); ?>
-				</div>
-				<div class="tab-pane fade " id="tab_content_2_3">
-					<?php include('catelist/2_3.php'); ?>
-				</div>
-				<div class="tab-pane fade" id="tab_content_2_4">
-					<?php include('catelist/2_4.php'); ?>
-				</div>
-				<div class="tab-pane fade" id="tab_content_2_5">
-					<?php include('catelist/2_5.php'); ?>
-				</div>
+			<div class="category">
+				<ul>
+
+					<li class="ad04_cate_list active" data-number="6">
+						<a id="ngm" href="javascript:void(0);">
+							<!-- <div class="sym" style="background-image: url('/assets/images/category/category_1.png');"></div> -->
+							<p>상조</p>
+						</a>
+					</li>
+					<li class="ad04_cate_list" data-number="7">
+						<a href="javascript:void(0);">
+							<!-- <div class="sym" style="background-image: url('/assets/images/category/category_1.png');"></div> -->
+							<p>레저</p>
+						</a>
+					</li>
+					<li class="ad04_cate_list" data-number="8">
+						<a href="javascript:void(0);">
+							<!-- <div class="sym" style="background-image: url('/assets/images/category/category_1.png');"></div> -->
+							<p>여행</p>
+						</a>
+					</li>
+					<li class="ad04_cate_list" data-number="9>
+						<a href=" javascript:void(0);">
+						<!-- <div class="sym" style="background-image: url('/assets/images/category/category_1.png');"></div> -->
+						<p>통신</p>
+						</a>
+					</li>
+					<li class="ad04_cate_list" data-number="10>
+						<a href=" javascript:void(0);">
+						<!-- <div class="sym" style="background-image: url('/assets/images/category/category_1.png');"></div> -->
+						<p>기타</p>
+						</a>
+					</li>
+
+				</ul>
 			</div>
+
+			<script>
+				window.onload = function() {
+					document.getElementById('ngm').click();
+				};
+			</script>
 
 			<div id="after"></div>
 			<? foreach ($product as $row) {

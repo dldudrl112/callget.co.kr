@@ -105,6 +105,9 @@ $route['ad03/news_view/(:num)'] = 'ad03/ad03/news_view/$1';
 
 $route['ad04'] = 'ad04/ad04';
 $route['ad04/index2'] = 'ad04/ad04/index2';
+$route['ad04/index3'] = 'ad04/ad04/index3';
+$route['ad04/index4'] = 'ad04/ad04/index4';
+$route['ad04/index5'] = 'ad04/ad04/index5';
 $route['ad04/about'] = 'ad04/ad04/about';
 $route['ad04/get/(:num)'] = 'ad04/ad04/get/$1';
 $route['ad04/call/(:num)'] = 'ad04/ad04/call/$1';

@@ -76,6 +76,11 @@
                                     <li><a href="/ad04/admin/newsList">소식 괸리 </a></li>
                                 </ul>
                             </li>
+                            <li><a><i class="fa fa-edit"></i> 이벤트 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="/ad04/admin/eventList">이벤트 괸리 </a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>

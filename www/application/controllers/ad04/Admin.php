@@ -102,6 +102,73 @@ class Admin extends CI_Controller {
         $this->json($json);
     }
 
+ //이벤트//
+ public function eventList($idx = 1)
+ {
+     $this->ad04_nologin();
+     $name = "메인 슬라이드 관리";
+     $insert = "/ad04/admin/insertevent";
+     $url = URL.'ad04/admin/eventList/';
+     $col = ['번호','정렬','슬라이드 이름','썸네일 이미지',' URL 링크 주소', '등록 시간','수정', '삭제'];
+     $button = $this->adminButton($col);
+     $json = $this->ad04_adminmodel->eventlistData($idx);
+     $this->paging($json, $url);
+     $data = array('name'=>$name,'col'=>$col,'list'=>$json['list'],'adminbutton'=>$button,'insert'=>$insert,'page'=>$idx);
+
+     $this->load->view('ad04admin/admin_header');
+     $this->load->view('ad04admin/admin_eventlist',$data);
+ }
+
+ public function insertevent()  //등록
+ {
+     $this->ad04_nologin();
+     $this->load->view('ad04admin/admin_header');
+     $name = "메인 슬라이드 등록";
+     $data = array('name'=>$name);
+     $this->load->view('ad04admin/admin_eventinsert',$data);
+ }
+
+ public function eventinsertData()
+ {
+     $json = $this->ad04_adminmodel->eventinsertData();
+     $this->json($json);
+ }
+
+ public function eventedit($idx) //보기
+ {
+     $this->ad04_nologin();
+     $name = "메인 슬라이드 수정";
+     $json = $this->ad04_adminmodel->eventData($idx);
+     $data = array('name'=>$name,'data'=>$json);
+
+     $this->load->view('ad04admin/admin_header');
+     $this->load->view('ad04admin/admin_eventinsert',$data);
+ }
+
+ public function eventUpdate()
+ {
+     $json = $this->ad04_adminmodel->eventUpdate();
+     $this->json($json);
+ }
+
+ public function eventIdxsUpdate()
+ {
+     $json = $this->ad04_adminmodel->eventIdxsUpdate();
+     $this->json($json);
+ }
+
+ public function eventdel($idx)
+ {
+     $json = $this->ad04_adminmodel->eventdel($idx);
+     $this->json($json);
+ }
+ public function eventCount()
+ {
+     $json = $this->ad04_adminmodel->eventCount();
+     $this->json($json);
+ }
+
+
     //카테고리
     public function categoryList($idx = 1)
     {

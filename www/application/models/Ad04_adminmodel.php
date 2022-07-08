@@ -108,6 +108,79 @@ class Ad04_adminmodel extends CI_Model {
         return $this->db->query($sql, $array)->row()->count;
     }
 
+//이벤트 -----------------------------------------------------------------
+public function eventListData($page = 1) {
+    $table = "ad04_event";
+    $limit=10;
+    $offset=$limit*($page-1);
+    $sql="SELECT event_idx, @rownum:=@rownum+1 num, event_name, event_image, event_link, event_date
+            FROM ad04_event, (SELECT @rownum:=0) TMP
+            ORDER BY event_idxs DESC
+          limit {$limit} offset {$offset}";
+    $result = $this->db->query($sql)->result();
+
+    $sql="SELECT COUNT(*) count FROM $table";
+    $count = $this->db->query($sql)->row();
+
+    return array('return'=>true,'list'=>$result,'count'=>$count->count);
+}
+
+public function eventinsertData() {
+    $table = "ad04_event";
+
+    $sql="SELECT event_idxs FROM ad04_event order by event_idxs DESC LIMIT 1";
+    $event_idxs = $this->db->query($sql)->row()->event_idxs + 1;
+    foreach($_POST as $key => $value ){
+        $key = 'event_'.$key;
+        $array[$key] = $value;
+    }
+    $array['event_date'] = date('Y-m-d H:i:s');
+    $array['event_idxs'] = $event_idxs;
+    $result = $this->db->insert($table, $array);
+    return array('return'=>$result);
+}
+
+public function eventData($idx) {
+    $array = array($idx);
+    $sql="SELECT event_idx, event_name, event_image, event_link
+        FROM ad04_event WHERE event_idx = ?";
+    return $this->db->query($sql, $array)->row();
+}
+
+public function eventUpdate() {
+    $array = array($_POST['name'], $_POST['image'], $_POST['link'], $_POST['idx']);
+    $sql= "UPDATE ad04_event SET event_name = ?, event_image = ?,
+            event_link = ? WHERE event_idx = ?";
+    $result = $this->db->query($sql, $array);
+    return array('return'=>$result);
+}
+
+public function eventIdxsUpdate() {
+    $idxs = $_POST['idxs'];
+    $idx = $_POST['idx'];
+    $table = "ad04_event";
+    for($i=0; $i<count($idxs); $i++) {
+        $sql= "UPDATE ad04_event SET event_idxs = ? WHERE event_idx = ?";
+        $array = array($idxs[$i], $idx[$i]);
+        $result = $this->db->query($sql, $array);
+    }
+    return array('return'=>$result);
+}
+
+public function eventdel($idx) {
+    $array = array($idx);
+    $sql= "DELETE FROM ad04_event WHERE event_idx = ?";
+    $result = $this->db->query($sql, $array);
+    return array('return'=>$result);
+}
+
+public function eventCount() {
+    $sql="SELECT COUNT(*) count  FROM ad04_event";
+    return $this->db->query($sql, $array)->row()->count;
+}
+
+//-------------------------------------------------------------------------
+
 //-------------------------------------------------------------------------
 
     //카테고리

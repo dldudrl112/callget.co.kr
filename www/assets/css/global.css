@@ -114,6 +114,10 @@ hr { display: block; margin: 5px 0; padding: 0; height: 1px; border: 0; border-t
 .video-container { position: relative; padding-bottom: 44.5%; padding-top: 30px; height: 0; overflow: hidden; } 
 .video-container iframe, .video-container object, .video-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
+.video-faq {padding: 0 10%; background-color: #fffbf8;}
+.video-container-faq {border-radius: 10px; position: relative; padding-bottom: 44.5%; padding-top: 110px; height: 0; overflow: hidden; } 
+.video-container-faq iframe, .video-container object, .video-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
 
 /* ============================================== /*
  *                    Header
@@ -160,6 +164,8 @@ hr { display: block; margin: 5px 0; padding: 0; height: 1px; border: 0; border-t
 	.navbar-global .logo { top: 8px; }
 	.navbar-global .logo.ns { top: 5px; }
 	/*.navbar-global .navbar-header { border-bottom: 1px solid #2970d6; }*/
+	.video-faq {padding: 0 0%; background-color: #fffbf8;}
+	.video-container-faq { position: relative; padding-bottom: 44.5%; padding-top: 43px; height: 0; overflow: hidden; } 
 }
 @media (min-width: 768px) and (max-width: 991px) {
 	.navbar-global { padding: 5px 0; -webkit-transition: padding .3s; -moz-transition: padding .3s; transition: padding .3s; }

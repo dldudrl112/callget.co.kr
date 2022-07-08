@@ -3,6 +3,8 @@
 /* ============================================== */
 
 .faq { padding: 30px 15px; }
+.img-faq .w {display: block;}
+.img-faq .m {display: none;}
 
 #faq_1 { margin-top: 50px; padding: 40px 15px; position: relative; background-image: url("../images/bg/bg.jpg"); background-size: cover; background-repeat: no-repeat; background-position: 50%; }
 #faq_1 .cover { position: absolute; top: 0; left: 0; width: 100%; height: 202px; background-color: rgba(255,255,255,0.5); }
@@ -17,6 +19,11 @@
 #faq_3 .explain .ex p:nth-child(2) { margin-top: 8px; font-size: 16px; font-weight: bold; }
 #faq_3 .explain .ex p:nth-child(3) { margin-top: 3px; font-size: 14px; }
 
+@media (max-width: 768px) {
+	.img-faq .w {display: none;}
+	.img-faq .m {display: block;}
+}
+
 @media (min-width: 768px) and (max-width: 991px) {
 	#faq_3 .explain .ex p:nth-child(3) { height: 44px; font-size: 15px; }
 }
@@ -25,6 +32,10 @@
 	#faq_1 { margin-top: 60px; padding: 40px 15px; }
 	#faq_2 { max-width: 940px; padding: 40px 15px; }
 }
+
+.img-faq img {width: 100%;}
+
+
 
 /* Bootstrap_Custom */
 .panel-group .panel+.panel { margin-top: 10px; }
